@@ -1,3 +1,5 @@
+// npm install -D vitest
+
 import { describe, expect, test } from "vitest";
 import { add, multiply, substract } from "./math.helper";
 
