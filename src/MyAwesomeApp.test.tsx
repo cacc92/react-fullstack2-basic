@@ -45,4 +45,27 @@ describe("MyAwesomeApp", () => {
     // ! 3. Assert
     expect(h1.innerHTML).toContain("César");
   });
+
+  // Los snapshot son para verificar que la UI no ha cambiado
+  // Si la UI cambia, el snapshot va a fallar
+  // Si el cambio es intencional, se debe actualizar el snapshot
+  // Cuando me refiero a UI, me refiero al HTML generado tiene que ser igual
+  // Hablando de structura
+  test("should match snapshot", () => {
+    // ! 1. Arrange (Preparacion)
+    const { container } = render(<MyAwesomeApp />);
+
+    // ! 3. Assert
+    expect(container).toMatchSnapshot();
+
+    // screen.debug();
+  });
+
+  test("should match snapshot - screen", () => {
+    // ! 1. Arrange (Preparacion)
+    render(<MyAwesomeApp />);
+
+    // ! 3. Assert
+    expect(screen.getByTestId("div-app")).toMatchSnapshot();
+  });
 });
