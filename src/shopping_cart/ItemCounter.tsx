@@ -1,6 +1,6 @@
 // Se realiza rafc para completar
 
-import React, { useState, type CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 
 // import "./ItemCounter.css";
 import styles from "./ItemCounter.module.css";
@@ -10,12 +10,13 @@ interface Props {
   quantity?: number;
 }
 
-const sectionExample: CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  gap: 10,
-  marginTop: 10,
-};
+
+// const sectionExample: CSSProperties = {
+//   display: "flex",
+//   alignItems: "center",
+//   gap: 10,
+//   marginTop: 10,
+// };
 
 export const ItemCounter = ({ name, quantity = 1 }: Props) => {
   const [count, setCount] = useState(quantity);
@@ -28,9 +29,9 @@ export const ItemCounter = ({ name, quantity = 1 }: Props) => {
 
   // const itemCounterObj = useState(10);
 
-  const handleClick = () => {
-    console.log(`Click en ${name}`);
-  };
+  // const handleClick = () => {
+  //   console.log(`Click en ${name}`);
+  // };
 
   const handleAdd = () => {
     setCount(count + 1);
