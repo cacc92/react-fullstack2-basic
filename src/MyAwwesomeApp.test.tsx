@@ -20,5 +20,24 @@ describe('MyAwesomeApp', ()=>{
         expect(h1?.innerHTML).toContain("César");
         expect(h3?.innerHTML).toBe("Carrasco")
 
-    })
+    });
+
+    test("Should render firstname and lastname - screen", () =>{
+        const name = "César";
+        render(<MyAwesomeApp />);
+        // screen.debug()
+
+        // const h1 = screen.getByRole('heading', {level: 1});
+        const h1 = screen.getByTestId("first-name-title");
+        console.log(h1.innerHTML)
+
+        expect(h1.innerHTML).toContain(name)
+    
+    });
+
+    test("should match snapshot - screen", () => {
+        render(<MyAwesomeApp />);
+
+        expect(screen.getByTestId("div-app")).toMatchSnapshot()
+    });
 });
