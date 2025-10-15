@@ -75,8 +75,39 @@ describe('ItemCounter', () => {
         // [,btnSubs] ==> posicion 1
         const [,btnSubs] = buttons;
         // console.log(btnAdd.innerHTML, btnSubs.innerHTML)
-        fireEvent.click(btnSubs)
-        expect(screen.getByText('1')).toBeDefined()
+        fireEvent.click(btnSubs);
+        //screen.debug();
+        expect(screen.getByText('1')).toBeDefined();
+    
+    });
+
+    test("Deberia cambiar a rojo cuando la cantidad es 1", ()=>{
+        const name = "Test Item";
+        const quantity = 1;
+
+        // Renderizando el elemento de prueba tanto con el nombre
+        // como con la cantidad
+        render(<ItemCounter name={name} quantity={quantity}/>)
+    
+        // Busco el elemento por el texto imprido de item text
+        const spanText = screen.getByText(name);
+        expect(spanText.style.color).toBe('red');
+
+    });
+    test("Deberia cambiar a negro cuando presiono el +1", ()=>{
+        const name = "Test Item";
+        const quantity = 1;
+
+        // Renderizando el elemento de prueba tanto con el nombre
+        // como con la cantidad
+        render(<ItemCounter name={name} quantity={quantity}/>)
+    
+        // Busco el elemento por el texto imprido de item text
+        const spanText = screen.getByText(name);
+        const [btnAdd] = screen.getAllByRole('button');
+        fireEvent.click(btnAdd)
+        expect(spanText.style.color).toBe('black');
+
     });
 
 });
