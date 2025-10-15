@@ -38,7 +38,7 @@ describe("MyAwesomeApp", () => {
 
     // ! 2. Act (Aplicar actiar)
 
-    //const h1 = screen.getByRole("heading", { level: 1 });
+    // const h1 = screen.getByRole("heading", { level: 1 });
     const h1 = screen.getByTestId("first-name-title");
     console.log(h1.innerHTML);
 
