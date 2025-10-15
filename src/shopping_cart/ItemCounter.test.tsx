@@ -5,9 +5,19 @@ import { ItemCounter } from "./ItemCounter";
 describe('ItemCounter', () => {
     test("Deberia renderizar un elemento por defecto", () => {
         const name = "Test Item"
+        // Renderizamos el item counter para construir un elemento
+        // del tipo item counter
+        // El render genera un elemento screen automaticamente
         render(<ItemCounter name={name}/>)
         // screen.debug()
+        //  toBeDefined -> Veiamos la existencia de ese elemento detro de mi DOM
+        // el getByText busca un elemento por el texto que se encuentra dentro de 
+        // la etiqueta de HTML, pero solamente busca un elemento unico, si existe
+        // mas de uno este método generará un error de búsqueda, por lo cual se 
+        // debe utilizar getAllByText(name) u otro similar
         expect(screen.getByText(name)).toBeDefined();
+        // not.toBeNull -> <h1 data-tesid="algo"></h1> ese valor sera nulo porque
+        // el h1 no contiene un valor dentro.
         expect(screen.getByText(name)).not.toBeNull();
 
     });
@@ -15,9 +25,13 @@ describe('ItemCounter', () => {
     test("Deberia renderizar un elemento con una cantidad por defecto", () => {
         const name = "Test Item"
         const quantity = 10
+
+        // renderizaba el ItemCounter tanto con name como con quantity
         render(<ItemCounter name={name} quantity={quantity}/>)
         // screen.debug();
 
+        // Buscaba por texto la cantidad, en caso que exista esta cantidad
+        // la prueba esta completada
         expect(screen.getByText(quantity)).toBeDefined();
     });
 
@@ -25,11 +39,15 @@ describe('ItemCounter', () => {
         const name = "Test Item"
         const quantity = 10
         render(<ItemCounter name={name} quantity={quantity}/>)
+        // Obtengo todos los botones 
         const buttons = screen.getAllByRole('button');
-        // console.log(buttons)
+        // Destructuracion de una lista, para obtener el boton +1
         const [btnAdd] = buttons;
         // console.log(btnAdd.innerHTML, btnSubs.innerHTML)
+        // Si quiero simular un eveto ocupo 
+        // fireEvent.(el evento que quiero)(element)
         fireEvent.click(btnAdd)
+        // Realizo la comprobación que realmente aumento en 1 el valor
         expect(screen.getByText('11')).toBeDefined()
     });
 
@@ -51,6 +69,10 @@ describe('ItemCounter', () => {
         render(<ItemCounter name={name} quantity={quantity}/>)
         const buttons = screen.getAllByRole('button');
         // console.log(buttons)
+        // Destructuro una lista con dos posiciones btn +1 y btn -1 
+        // [btnAdd] ==> posicion 0
+        // [btnAdd, btnSubs] ==> posicion 0 y 1
+        // [,btnSubs] ==> posicion 1
         const [,btnSubs] = buttons;
         // console.log(btnAdd.innerHTML, btnSubs.innerHTML)
         fireEvent.click(btnSubs)
