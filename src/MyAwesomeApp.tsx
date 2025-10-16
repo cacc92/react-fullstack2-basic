@@ -27,15 +27,15 @@ const myStyle: CSSProperties = {
 // Tambien se puede resolver con una funcion tipo flecha
 export const MyAwesomeApp = () => {
   return (
-    <>
-      <h1>{firstName}</h1>
+    <div data-testid="div-app">
+      <h1 data-testid="first-name-title"> {firstName} </h1>
       <h3>{lastName}</h3>
-
+      <p>Esto es un parrafo</p>
       <p>{favoriteGames.join(", ")}</p>
 
       <h1>{isActive ? "Esta activo" : "No esta activo"}</h1>
 
       <p style={myStyle}>{JSON.stringify(address)}</p>
-    </>
+    </div>
   );
 };
