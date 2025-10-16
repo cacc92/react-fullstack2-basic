@@ -13,7 +13,7 @@ createRoot(document.getElementById("root")!).render(
     <div>
       <h2>Hola dentro de un DIV</h2>
     </div> */}
-    <FirstStepApp />
-    {/* <MyAwesomeApp /> */}
+    {/* <FirstStepApp /> */}
+    <MyAwesomeApp />
   </StrictMode>
 );
